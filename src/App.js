@@ -13,11 +13,11 @@ function App() {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    axios.get('https://newsapi.org/v2/top-headlines/sources?apiKey=0df11b191f614605bc3845176f5f6107')
+    axios.get('https://jsonplaceholder.typicode.com/posts')
       .then(function (response) {
         // handle success
         console.log(response);
-        setNews(response?.data.sources);
+        setNews(response?.data);
         setLoading(false);
       })
       .catch(function (error) {
@@ -32,7 +32,7 @@ function App() {
     <>
       {error != true ? (
         <div className="App">
-          <h2 className='text-center mt-3'>Getting News</h2>
+          <h2 className='text-center mt-3'>Getting Post Data</h2>
           <Container>
             <Row>
               {loading ? (
@@ -47,14 +47,14 @@ function App() {
               ) : newsData !== null && newsData.length <= 0 ? (
                 <p>No data available</p>
               ) : (
-                newsData.map((source) => (
-                  <Col sm={12} md={4} key={source.id}>
-                    <Card className='card' style={{ minHeight: '200px' }}>
+                newsData.map((data) => (
+                  <Col sm={12} md={4} key={data.id}>
+                    <Card className='card' style={{ minHeight: '250px' }}>
                       <Card.Body>
-                        <Card.Title>{source.name}</Card.Title>
+                        <Card.Title>{data.title}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">Asad</Card.Subtitle>
                         <Card.Text>
-                          {source.description.slice(0, 80)}.
+                          {data.body.slice(0, 80)}.
                         </Card.Text>
                         <Card.Link href="/">View Detail</Card.Link>
                       </Card.Body>
