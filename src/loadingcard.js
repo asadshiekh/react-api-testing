@@ -10,7 +10,7 @@ function loadingcard() {
   
 
         <Col sm={12} md={4}>
-            <Card style={{ minHeight: '250px' }}>
+            <Card style={{ minHeight: '250px',width:'100%'}}>
             <Card.Body>
                 <Placeholder as={Card.Title} animation="glow">
                 <Placeholder xs={6} sm={10} md={20} />
